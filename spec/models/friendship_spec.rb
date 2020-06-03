@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  context "Friendship user associations" do
+  context 'test user frindship relationship' do
     it { should belong_to(:user) }
-  
+    it { should belong_to(:friend).class_name(:User) }
   end
-  
 end
