@@ -67,4 +67,8 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  RSpec.configure do |c|
+    c.include Devise::Test::ControllerHelpers, type: :controller
+  end
 end
