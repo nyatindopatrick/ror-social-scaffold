@@ -1,44 +1,27 @@
-module FriendshipsHelper
-  def friend_btn(user)
-    if user.id == current_user.id
-      nil
-    elsif current_user.pending_friends.map(&:id).include?(user.id)
-      link_to 'Cancel Request', user_friendship_path(current_user, user), method: :delete, class: 'add-friend'
-    elsif current_user.friends.include?(user) || user.friends.include?(current_user)
-      link_to 'Unfriend', user_friendship_path(current_user, user), method: :delete, class: 'add-friend'
-
-    elsif current_user.friend_requests.map(&:id).include?(user.id)
-      link_to 'Confirm request', user_friendship_path(current_user, user), method: :patch, class: 'add-friend'
+class FriendshipsController < ApplicationController
+  def create
+    @friend = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
+    if @friend.save
+      redirect_to users_path, notice: 'friend request sent sucessfully!'
     else
-      link_to 'Add Friend', user_friendships_path(current_user, friend_id: user.id),
-              method: :post, class: 'fas fa-user-plus add-friend'
+      redirect_to users_path, alert: 'Request failed!'
     end
   end
 
-  def reject_btn(user)
-    link = link_to 'Reject', user_friendship_path(current_user, user), method: :delete, class: 'add-friend'
-    return link if current_user.friend_requests.map(&:id).include?(user.id)
+  def update
+    @friend = User.find(params[:id])
+    current_user.confirm_friend(@friend)
+    redirect_to users_path, notice: 'You are now friends!'
   end
 
-  # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-  def mutual_friends(user)
-    return nil if user == current_user
-
-    m = current_user.friends.select { |u| user.friends.include?(u) }
-    m = m.delete(current_user) if m.include?(current_user)
-
-    if m.empty?
-      '0 mutual friends'
-    elsif !m.is_a?(Array)
-      "#{name} is a mutual friend"
-    elsif m.size == 1
-      "#{m[0].name} is a mutual friend"
-    elsif m.size == 2
-      "#{m[0].name} and #{m[1].name} are mutual friends"
+  def destroy
+    @friend = Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
+    @friend ||= Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
+    @friend.destroy
+    if @friend.confirmed
+      redirect_to users_path, notice: 'Successfully unfriended!'
     else
-      "#{m[0].name} and #{m.size - 1} others are mutual friends"
-
+      redirect_to users_path, notice: 'Successfully cancelled request!'
     end
   end
-  # rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 end
