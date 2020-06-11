@@ -9,8 +9,9 @@
         </span>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
+        </span><br><br>
+        <%= mutual_friends(user)%>
+      </li><br><br>
     <% end %>
   </ul>
 </section>
