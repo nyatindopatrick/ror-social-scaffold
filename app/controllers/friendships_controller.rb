@@ -9,13 +9,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friend = Friendship.find_by(friend_id: params[:user_id], user_id: params[:id])
-    @friend.update(confirmed: true)
-    if @friend.save
-      redirect_to users_path, notice: 'You are now friends!'
-    else
-      redirect_to users_path, alert: 'Request failed!'
-    end
+    @friend = User.find(params[:id])
+    current_user.confirm_friend(@friend)
+    redirect_to users_path, notice: 'You are now friends!'
   end
 
   def destroy
