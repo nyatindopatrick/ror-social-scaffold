@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :friend_requests, through: :inverted_friendships, source: :user
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship = inverted_friendships.find_by(user_id: user)
     friendship.confirmed = true
     friendship.save
   end
