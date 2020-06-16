@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
 
   has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
@@ -23,8 +23,8 @@ class User < ApplicationRecord
 
   def confirm_friend(user)
     friendship = inverted_friendships.find_by(user_id: user)
-    friendship.confirmed = true
-    friendship.save
+    friendship.update(confirmed: true)
+    Friendship.create(user: friendship.friend, friend: friendship.user, confirmed: true)
   end
 
   def reject_friend(user)
