@@ -13,6 +13,7 @@
 
 https://social-scaffold.herokuapp.com
 
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -57,7 +58,6 @@ Open `http://localhost:3000/` in your browser.
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
-
 You can deploy the app on [heroku](https://heroku.com)
 
 ## Authors
@@ -70,9 +70,6 @@ You can deploy the app on [heroku](https://heroku.com)
 
 👤 Patrick Nyatindo
 
-- Github: [@nyatindopatrick](https://github.com/nyatindopatrick)
-- Twitter: [@nyatindopatrick](https://twitter.com/nyatindopatrick)
-- Linkedln: [Patrick Nyatindo](https://www.linkedin.com/in/nyatindopatrick)
 
 ## 🤝 Contributing
 
@@ -87,8 +84,9 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse
-- Stack overflow
+- Stack Overflow
 
 ## 📝 License
 
 MIT
+
