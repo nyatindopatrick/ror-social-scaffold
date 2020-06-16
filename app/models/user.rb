@@ -35,6 +35,7 @@ class User < ApplicationRecord
   def friends_and_own_posts
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
     friends_array.concat(inverse_friendships.map { |friendship| friendship.user if friendship.confirmed })
-    Post.where(user: friends_array.compact)
+    friends_array = friends_array.compact.concat([id])
+    Post.where(user: friends_array)
   end
 end
