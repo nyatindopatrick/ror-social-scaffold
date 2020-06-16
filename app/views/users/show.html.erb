@@ -1,5 +1,12 @@
 <section class="user-section">
+<div class="user-profile">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <span>
+    <%= friend_btn(@user) %>
+    <%= reject_btn(@user) %>
+  </span>
+  <%= mutual_friends(@user)%>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
