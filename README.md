@@ -2,6 +2,8 @@
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
+![code3](https://user-images.githubusercontent.com/48393059/84778933-5e73a000-afec-11ea-8051-3792ff703ad3.png)
+
 ## Built With
 
 - Ruby v2.7.0
@@ -9,8 +11,7 @@
 
 ## Live Demo
 
-TBA
- 
+https://social-scaffold.herokuapp.com
 
 ## Getting Started
 
@@ -37,8 +38,6 @@ Setup database with:
    rails db:migrate
 ```
 
-
-
 ### Usage
 
 Start server with:
@@ -59,11 +58,21 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+You can deploy the app on [heroku](https://heroku.com)
 
 ## Authors
 
-TBA
+👤 Mbabali Iryn
+
+- Github: [@mbabaliiryn](https://github.com/mbabaliiryn)
+- Twitter: [@irynmbabali](https://twitter.com/irynmbabali)
+- Linkedln: [mbabaliiryn](https://www.linkedin.com/in/mbabaliiryn)
+
+👤 Patrick Nyatindo
+
+- Github: [@nyatindopatrick](https://github.com/nyatindopatrick)
+- Twitter: [@nyatindopatrick](https://twitter.com/nyatindopatrick)
+- Linkedln: [Patrick Nyatindo](https://www.linkedin.com/in/nyatindopatrick)
 
 ## 🤝 Contributing
 
@@ -77,9 +86,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse
+- Stack overflow
 
 ## 📝 License
 
-TBA
-
+MIT
